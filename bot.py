@@ -27,7 +27,7 @@ def textCommands(session, uid, type, text, sent_time, ignore_level):
         a = mysql.fetchOne()
         sendMessage = main.SendMessage()
         sendMessage.setUid(uid)
-        sendMessage.setMsg('%s / %s GB, wykorzystano: %.2s%%' % (a[0], a[1], a[0]/a[1]*100))
+        sendMessage.setMsg('%.0f / %s GB, wykorzystano: %.0f%%' % (a[0], a[1], a[0]/a[1]*100))
         sendMessage.sendMessageByUid()
     if text == '!acc load':
         mysql.query('SELECT akt_down_lacza, akt_upl_lacza, load1, load2, load3 FROM serwery WHERE nazwa=%s', main.getServerNameFromUid(uid))
