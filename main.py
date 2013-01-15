@@ -7,13 +7,16 @@ import ekg
 import dddd as secret
 
 class MySQLConnection:
-	def __init__(self):
-		self.db = MySQLdb.connect(secret.mysql['host'],
-			secret.mysql['username'],
-			secret.mysql['password'],
-			secret.mysql['databasename'],
-			connect_timeout=10)
-		self.handler = self.db.cursor()
+	def __init__(self, name):
+		try:
+			self.db = MySQLdb.connect(secret.mysql[name + 'host'],
+				secret.mysql[name + 'username'],
+				secret.mysql[name + 'password'],
+				secret.mysql[name + 'databasename'],
+				connect_timeout=10)
+			self.handler = self.db.cursor()
+		except Exception:
+			return False
 	def query(self, content, *arg):
 		self.handler.execute(content, arg)
 	def fetchOne(self):
@@ -49,24 +52,19 @@ class SendMessage():
 		ekg.command("msg %s %s" % (self.uid, self.msg))
 	def sendMessageByNick(self):
 		ekg.command("msg %s %s" % (self.nick, self.msg))
-	def warningMessage(self):
-		self.sendMessageByUid("Nie jesteś klientem WooX")
-
-class CreateDatabaseIteration():
-	pass
 
 def createGGNumberFromUid(uid):
 	return uid.replace('gg:','')
 
 def getUserNameFromUid(uid):
-	mysql = MySQLConnection()
+	mysql = MySQLConnection('remote')
 	mysql.query('SELECT nick FROM users WHERE gg=%s', createGGNumberFromUid(uid))
 	data = mysql.fetchOne()
 	del mysql
 	return data
 
 def getServerNameFromUid(uid):
-	mysql = MySQLConnection()
+	mysql = MySQLConnection('remote')
 	mysql.query('SELECT serwer FROM users WHERE gg=%s', createGGNumberFromUid(uid))
 	serverId = mysql.fetchOne()
 	mysql.query('SELECT nazwa FROM serwery WHERE id=%s', serverId[0])
@@ -75,8 +73,8 @@ def getServerNameFromUid(uid):
 	return serverName[0]
 
 def getServerAdminFromUid(uid):
-	mysql = MySQLConnection()
-	mysq.query('SELECT serwer FROM users WHERE gg=%s', createGGNumberFromUid(uid))
+	mysql = MySQLConnection('remote')
+	mysql.query('SELECT serwer FROM users WHERE gg=%s', createGGNumberFromUid(uid))
 	serverId = mysql.fetchOne()
 	mysql.query('SELECT admin FROM serwery WHERE id=%s', serverId[0])
 	if mysql.fetchOne() == '1':
@@ -85,3 +83,18 @@ def getServerAdminFromUid(uid):
 	else:
 		del mysql
 		return "tacajushi"
+
+def warningMessage(uid):
+	sendMessage = SendMessage()
+	sendMessage.setUid(uid)
+	sendMessage.setMsg('Nie jesteś klientem WooX')
+	sendMessage.sendMessageByUid()
+	return False
+
+def checkUserExistence(uid):
+	mysql = MySQLConnection('remote')
+	mysql.query('SELECT id FROM users WHERE gg=%s', createGGNumberFromUid(uid))
+	if mysql.fetchOne() == None:
+		return False
+	else:
+		return True
