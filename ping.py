@@ -2,7 +2,6 @@
 # -*- coding: ISO-8859-2 -*-
 
 import ekg
-import urllib
 import os
 
 path = "/home/tacajushi/.ekg2/scripts/"
