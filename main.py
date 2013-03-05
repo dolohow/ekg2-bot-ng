@@ -56,6 +56,15 @@ class SendMessage():
 def createGGNumberFromUid(uid):
 	return uid.replace('gg:','')
 
+def getServerNameFromNick(nick):
+	mysql = MySQLConnection('remote')
+	mysql.query('SELECT serwer FROM users WHERE nick=%s', nick)
+	serverId = mysql.fetchOne()
+	mysql.query('SELECT nazwa FROM serwery WHERE id=%s', serverId[0])
+	serverName = mysql.fetchOne()
+	del mysql
+	return serverName[0]
+
 def getUserNameFromUid(uid):
 	mysql = MySQLConnection('remote')
 	mysql.query('SELECT nick FROM users WHERE gg=%s', createGGNumberFromUid(uid))
