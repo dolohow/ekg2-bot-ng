@@ -6,7 +6,7 @@ import urllib
 import main
 from datetime import date
 
-domain = "http://test.woox.pl/API/api.php?"
+domain = "http://woox.pl/API/api.php?"
 
 def blokada(zablokuj, uid):
 	day = date.today()
