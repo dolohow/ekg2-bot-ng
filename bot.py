@@ -103,6 +103,7 @@ def sshCommands(uid, text):
 		data = mysql.fetchAll()
 	for i in data:
 		if text.strip() == i[0]:
+			ekg.echo('i')
 			fetch = main.MySQLConnection('local')
 			ssh = main.SSHConnection()
 			server = main.getServerNameFromUid(uid)
@@ -118,7 +119,7 @@ def sshCommands(uid, text):
 			sendMessage.setMsg(ssh.getResult())
 			sendMessage.sendMessageByUid()
 			del ssh, fetch, sendMessage
-		return True
+	return True
 	del mysql
 
 def messageHandler(session, uid, type, text, sent_time, ignore_level):
