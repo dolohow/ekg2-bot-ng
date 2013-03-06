@@ -103,7 +103,6 @@ def sshCommands(uid, text):
 		data = mysql.fetchAll()
 	for i in data:
 		if text.strip() == i[0]:
-			ekg.echo('i')
 			fetch = main.MySQLConnection('local')
 			ssh = main.SSHConnection()
 			server = main.getServerNameFromUid(uid)
