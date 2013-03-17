@@ -70,22 +70,22 @@ def accountCommands(uid, text):
 		sendMessage.setUid(uid)
 		if a[0] == 0:
 			if a[1] == 'przelew':
-			    sendMessage.setMsg('Ciekot Grzegorz\nAl. N.M.P.62/27\n42-200 Czestochowa\n\n36 1140 2004 0000 3902 3331 4150\n\ntytuÅ przelewu: Darowizna x%sx' % a[2])
+			    sendMessage.setMsg('Ciekot Grzegorz\nAl. N.M.P.62/27\n42-200 Czestochowa\n\n36 1140 2004 0000 3902 3331 4150\n\ntytuł przelewu: Darowizna x%sx' % a[2])
 			elif a[1] == 'paypal':
-			    sendMessage.setMsg('paypal: woox@woox.pl\nproszÄ zaznaczyÄ prezent, krewni/znajomi')
+			    sendMessage.setMsg('paypal: woox@woox.pl\nproszę zaznaczyć prezent, krewni/znajomi')
 			elif a[1] == 'przysluga':
-			    sendMessage.setMsg('Nie musisz nic pÅaciÄ ;-)')
+			    sendMessage.setMsg('Nie musisz nic płacić ;-)')
 		elif a[0] == 1:
 			if a[1] == 'przelew':
-			    random = ["wilk", "dudek", "puchacz", "Å¼Ã³Åw", "Å¼aba", "jelonek", "jeÅ¼", "sum", "jaszczurka", "sokÃ³Å", "nietoperz"]
-			    sendMessage.setMsg('20 1140 2004 0000 3502 7432 5846\ntytuÅ przelewu: Allegro %s x%sx' % (choice(random), a[2]))
+			    random = ["wilk", "dudek", "puchacz", "żółw", "żaba", "jelonek", "jeż", "sum", "jaszczurka", "sokół", "nietoperz"]
+			    sendMessage.setMsg('20 1140 2004 0000 3502 7432 5846\ntytuł przelewu: Allegro %s x%sx' % (choice(random), a[2]))
 			elif a[1] == 'paypal':
-			    sendMessage.setMsg('paypal: dolohow@gmail.com\nproszÄ zaznaczyÄ prezent, krewni/znajomi')
+			    sendMessage.setMsg('paypal: dolohow@gmail.com\nproszę zaznaczyć prezent, krewni/znajomi')
 		elif a[0] == 2:
 			if a[1] == 'przelew':
 			    sendMessage.setMsg('22 1140 2004 0000 3202 7438 8328\nDarowizna x%sx' % a[2])
 			elif a[1] == 'paypal':
-			    sendMessage.setMsg('paypal: reyderti@gmail.com\nproszÄ zaznaczyÄ prezent, krewni/znajomi')
+			    sendMessage.setMsg('paypal: reyderti@gmail.com\nproszę zaznaczyć prezent, krewni/znajomi')
 		sendMessage.sendMessageByUid()
 		return True
 	elif text == '!acc valid':
@@ -94,7 +94,7 @@ def accountCommands(uid, text):
 		a = mysql.fetchOne()
 		sendMessage = main.SendMessage()
 		sendMessage.setUid(uid)
-		sendMessage.setMsg('WaÅ¼noÅÄ konta %s, pozostaÅo %s dni' % (str(a[0]), str((a[0]-today).days)))
+		sendMessage.setMsg('Ważność konta %s, pozostało %s dni' % (str(a[0]), str((a[0]-today).days)))
 		sendMessage.sendMessageByUid()
 		return True
 	del mysql
