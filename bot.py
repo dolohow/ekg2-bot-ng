@@ -121,6 +121,7 @@ def sshCommands(uid, text):
 			sendMessage.setMsg(ssh.getResult())
 			sendMessage.sendMessageByUid()
 			del ssh, fetch, sendMessage
+			break
 	return True
 	del mysql
 
