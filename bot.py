@@ -74,22 +74,22 @@ def sshCommands(uid, mysql, text):
 	if main.checkUserExistence(uid):
 		mysql.query('SELECT command FROM botssh')
 		data = mysql.fetchAll()
-	for i in data:
-		if text.find(i[0]) == 0:
-			ssh = main.SSHConnection()
-			server = main.getServerNameFromUid(uid)
-			username = main.getUserNameFromUid(uid)
-			mysql.query('SELECT execute FROM botssh WHERE command=%s', i[0])
-			execute = mysql.fetchOne()
-			s = Template(execute[0])
-			s = s.safe_substitute(nick=username[0], name=re.split(' ', text, 2)[2])
-			ssh.setConnection(server, 'root', secret.serversList[server])
-			ssh.setCommand(s)
-			sendMessage = main.SendMessage()
-			sendMessage.setUid(uid)
-			sendMessage.setMsg(ssh.getResult())
-			sendMessage.sendMessageByUid()
-			break
+		for i in data:
+			if text.find(i[0]) == 0:
+				ssh = main.SSHConnection()
+				server = main.getServerNameFromUid(uid)
+				username = main.getUserNameFromUid(uid)
+				mysql.query('SELECT execute FROM botssh WHERE command=%s', i[0])
+				execute = mysql.fetchOne()
+				s = Template(execute[0])
+				s = s.safe_substitute(nick=username[0], name=re.split(' ', text, 2)[2])
+				ssh.setConnection(server, 'root', secret.serversList[server])
+				ssh.setCommand(s)
+				sendMessage = main.SendMessage()
+				sendMessage.setUid(uid)
+				sendMessage.setMsg(ssh.getResult())
+				sendMessage.sendMessageByUid()
+				break
 
 def messageHandler(session, uid, type, text, sent_time, ignore_level):
 	text = ' '.join(text.split())
