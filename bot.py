@@ -54,7 +54,7 @@ def accountCommands(uid, mysql, text):
 				    random = ["wilk", "dudek", "puchacz", "żółw", "żaba", "jelonek", "jeż", "sum", "jaszczurka", "sokół", "nietoperz"]
 				    sendMessage.setMsg('20 1140 2004 0000 3502 7432 5846\ntytuł przelewu: Allegro %s x%sx' % (choice(random), a[2]))
 				elif a[1] == 'paypal':
-				    sendMessage.setMsg('paypal: dolohow@gmail.com\nproszę zaznaczyć prezent, krewni/znajomi')
+				    sendMessage.setMsg('paypal: tacajushi@woox.pl\nproszę zaznaczyć prezent, krewni/znajomi')
 			elif a[0] == 2:
 				if a[1] == 'przelew':
 				    sendMessage.setMsg('22 1140 2004 0000 3202 7438 8328\nDarowizna x%sx' % a[2])
