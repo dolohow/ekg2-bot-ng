@@ -45,7 +45,7 @@ def wplaty(deadbeats, bool):
 def info(self, bool):
 	nick = str(ekg.window_current())
 	mysql = main.MySQLConnection('remote')
-	mysql.query('SELECT oplata_konta, sposob_platnosci, pay_my, vnc, rl, warn, dysk, pakiet_dysk, pakiet_cena, blokada, memo FROM users WHERE nick=%s', nick)
+	mysql.query('SELECT oplata_konta, sposob_platnosci, pay_my, vnc, rl, warn, dysk, pakiet_dysk, pakiet_cena, blokada, adnotacje FROM users WHERE nick=%s', nick)
 	data = mysql.fetchOne()
 	temp = []
 	temp.append(['Waznosc', str(data[0])])
