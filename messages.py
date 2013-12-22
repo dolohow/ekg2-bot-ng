@@ -1,5 +1,5 @@
 #!/usr/bin/python2.7
-# -*- coding: ISO-8859-2 -*-
+# -*- coding: utf-8 -*-
 
 import ekg
 import urllib
@@ -11,8 +11,10 @@ domain = "http://woox.pl/API/api.php?"
 def blokada(zablokuj, uid):
 	day = date.today()
 	podziel = uid.split(',')
-	for x in podziel:
-		ekg.command("msg " + x + " Z dniem " + day.isoformat() + " konto zostalo zablokowane")
+        sendMessage = main.SendMessage()
+        sendMessage.setUid(podziel)
+        sendMessage.setMsg("Z dniem", day.isoformat(), "konto zostało zablokowane")
+        sendMessage.sendMessageByUid()
 
 def wplaty(deadbeats, bool):
         day = date.today()
@@ -84,8 +86,10 @@ def info(self, bool):
 
 def advert(msg, uid):
         podziel = uid.split(',')
-        for x in podziel:
-	        ekg.command("msg " + x + " " + msg)
+        sendMessage = main.SendMessage()
+        sendMessage.setUid(podziel)
+        sendMessage.setMsg(msg)
+        sendMessage.sendMessageByUid()
 
 ekg.command_bind('blokada', blokada)
 ekg.command_bind('deadbeats', wplaty)

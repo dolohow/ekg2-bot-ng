@@ -43,16 +43,18 @@ class SSHConnection:
 class SendMessage():
 	def __init__(self):
 		ekg.command("session -w praca")
-	def setUid(self, uid):
-		self.uid = uid
-	def setNick(self, nick):
+	def setUid(self, *uid):
+		self.uid = uid               
+	def setNick(self, *nick):
 		self.nick = nick
 	def setMsg(self, msg):
 		self.msg = msg
 	def sendMessageByUid(self):
-		ekg.command("msg %s %s" % (self.uid, self.msg))
+	        for i in self.uid:
+		        ekg.command("msg %s %s" % (i, self.msg))
 	def sendMessageByNick(self):
-		ekg.command("msg %s %s" % (self.nick, self.msg))
+	        for i in self.nick:
+		        ekg.command("msg %s %s" % (i, self.msg))
 
 def createGGNumberFromUid(uid):
 	return uid.replace('gg:','')
