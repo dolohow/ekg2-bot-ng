@@ -13,7 +13,8 @@ class MySQLConnection:
 				secret.mysql[name + 'username'],
 				secret.mysql[name + 'password'],
 				secret.mysql[name + 'databasename'],
-				connect_timeout=10)
+				connect_timeout=10,
+				charset='utf8')
 			self.handler = self.db.cursor()
 		except Exception:
 			return False
