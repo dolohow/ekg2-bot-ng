@@ -69,6 +69,13 @@ def accountCommands(uid, mysql, text):
 			sendMessage.setUid(uid)
 			sendMessage.setMsg('Ważność konta %s, pozostało %s dni' % (str(a[0]), str((a[0]-today).days)))
 			sendMessage.sendMessageByUid()
+		elif text == '!acc upload limit':
+		        mysql.query('SELECT transfer_used FROM users WHERE gg=%s', main.createGGNumberFromUid(uid))
+			a = mysql.fetchOne()
+			sendMessage = main.SendMessage()
+			sendMessage.setUid(uid)
+		        sendMessage.setMsg(a[0])
+			sendMessage.sendMessageByUid()
 
 def sshCommands(uid, mysql, text):
 	if main.checkUserExistence(uid):
