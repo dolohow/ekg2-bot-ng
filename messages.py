@@ -81,7 +81,13 @@ def info(self, bool):
 			j = j + 1
 	ekg.echo('%-{0}s %-{1}s %-{2}s %-{3}s %-{4}s %-{5}s %-{6}s %-{7}s %-{8}s %-{9}s'.format(temp[0][2], temp[1][2], temp[2][2], temp[3][2], temp[4][2], temp[5][2], temp[6][2], temp[7][2], temp[8][2], temp[9][2]) % (temp[0][0], temp[1][0], temp[2][0], temp[3][0], temp[4][0], temp[5][0], temp[6][0], temp[7][0], temp[8][0], temp[9][0]))
 	ekg.echo('%-{0}s %-{1}s %-{2}s %-{3}s %-{4}s %-{5}s %-{6}s %-{7}s %-{8}s %-{9}s'.format(temp[0][2], temp[1][2], temp[2][2], temp[3][2], temp[4][2], temp[5][2], temp[6][2], temp[7][2], temp[8][2], temp[9][2]) % (temp[0][1], temp[1][1], temp[2][1], temp[3][1], temp[4][1], temp[5][1], temp[6][1], temp[7][1], temp[8][1], temp[9][1]))
-	
+
+def advert(msg, uid):
+        podziel = uid.split(',')
+        for x in podziel:
+	        ekg.command("msg " + x + " " + msg)
+
 ekg.command_bind('blokada', blokada)
 ekg.command_bind('deadbeats', wplaty)
 ekg.command_bind('info', info)
+ekg.command_bind('advert', advert)
