@@ -15,7 +15,7 @@ def gg_reminder():
                         constReminder = constReminder.split('|')
                         sendMessage = main.SendMessage()
                         sendMessage.setUid(constReminder)
-                        sendMessage.setMsg("Za", i, "dni/dzień stracisz ważność konta shell, aby dalej korzystać z konta, proszę o wpłatę, dane do przelewu sprawdzisz wysyłając do mnie wiadomość o treści !acc transfer\nJeśli nie chcesz dalej korzystać poinformuj o tym swojego admina.\nBrak informacji ze strony użytkownika lub wpłaty dzien po upływie terminu oznacza kasacje konta wraz z danymi."))
+                        sendMessage.setMsg("Za", i, "dni/dzień stracisz ważność konta shell, aby dalej korzystać z konta, proszę o wpłatę, dane do przelewu sprawdzisz wysyłając do mnie wiadomość o treści !acc transfer\nJeśli nie chcesz dalej korzystać poinformuj o tym swojego admina.\nBrak informacji ze strony użytkownika lub wpłaty dzien po upływie terminu oznacza kasacje konta wraz z danymi.")
                         sendMessage.sendMessageByUid()
 
 ekg.timer_bind(86400, gg_reminder)
