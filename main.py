@@ -43,10 +43,10 @@ class SSHConnection:
 class SendMessage():
 	def __init__(self):
 		ekg.command("session -w praca")
-	def setUid(self, *uid):
-		self.uid = uid               
-	def setNick(self, *nick):
-		self.nick = nick
+	def setUid(self, uid):
+		self.uid = uid.split(',')
+	def setNick(self, nick):
+		self.nick = nick.split(',')
 	def setMsg(self, msg):
 		self.msg = msg
 	def sendMessageByUid(self):
