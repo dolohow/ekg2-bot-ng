@@ -23,21 +23,21 @@ def messagesForEveryone(uid, mysql, text):
 
 def accountCommands(uid, mysql, text):
 	if main.checkUserExistence(uid):
-		if text == '!acc disk':
+		if text == '!disk':
 			mysql.query('SELECT dysk, pakiet_dysk FROM users WHERE gg=%s', main.createGGNumberFromUid(uid))
 			a = mysql.fetchOne()
 			sendMessage = main.SendMessage()
 			sendMessage.setUid(uid)
 			sendMessage.setMsg('%.0f / %s GB, wykorzystano: %.0f%%' % (a[0], a[1], a[0]/a[1]*100))
 			sendMessage.sendMessageByUid()
-		elif text == '!acc load':
+		elif text == '!load':
 			mysql.query('SELECT akt_down_lacza, akt_upl_lacza, load1, load2, load3 FROM serwery WHERE nazwa=%s', main.getServerNameFromUid(uid))
 			a = mysql.fetchOne()
 			sendMessage = main.SendMessage()
 			sendMessage.setUid(uid)
 			sendMessage.setMsg('DL: %.4s MB/s UL: %.4s MB/s   Load: %s %s %s' % (float(a[0])/1024, float(a[1])/1024, a[2], a[3], a[4]))
 			sendMessage.sendMessageByUid()
-		elif text == '!acc transfer':
+		elif text == '!transfer':
 			mysql.query('SELECT pay_my, sposob_platnosci, id FROM users WHERE gg=%s', main.createGGNumberFromUid(uid))
 			a = mysql.fetchOne()
 			sendMessage = main.SendMessage()
@@ -61,7 +61,7 @@ def accountCommands(uid, mysql, text):
 				elif a[1] == 'paypal':
 				    sendMessage.setMsg('paypal: reyderti@gmail.com\nproszę zaznaczyć prezent, krewni/znajomi')
 			sendMessage.sendMessageByUid()
-		elif text == '!acc valid':
+		elif text == '!valid':
 			today = date.today()
 			mysql.query('SELECT oplata_konta FROM users WHERE gg=%s', main.createGGNumberFromUid(uid))
 			a = mysql.fetchOne()
@@ -69,7 +69,7 @@ def accountCommands(uid, mysql, text):
 			sendMessage.setUid(uid)
 			sendMessage.setMsg('Ważność konta %s, pozostało %s dni' % (str(a[0]), str((a[0]-today).days)))
 			sendMessage.sendMessageByUid()
-		elif text == '!acc upload limit':
+		elif text == '!upload limit':
 		        mysql.query('SELECT transfer_used FROM users WHERE gg=%s', main.createGGNumberFromUid(uid))
 			a = mysql.fetchOne()
 			sendMessage = main.SendMessage()
