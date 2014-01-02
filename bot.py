@@ -89,7 +89,7 @@ def sshCommands(uid, mysql, text):
 				mysql.query('SELECT execute FROM botssh WHERE command=%s', i[0])
 				execute = mysql.fetchOne()
 				s = Template(execute[0])
-				s = s.safe_substitute(nick=username[0], name=re.split(' ', text, 2)[2])
+				s = s.safe_substitute(nick=username[0], name=re.split(' ', text, 2)[1])
 				ssh.setConnection(server, 'root', secret.serversList[server])
 				ssh.setCommand(s)
 				sendMessage = main.SendMessage()
