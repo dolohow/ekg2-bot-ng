@@ -12,9 +12,9 @@ def keypress(key):
         if str(key) == '270':
                 ekg.command("msg " + current + " Co mogę dla Ciebie zrobić?")
         if str(key) == '271':
-                ekg.command("msg " + current + " Jaką formę płatności wybierasz (przelew bankowy / paypal)?")
+                ekg.command("msg " + current + " http://woox.pl/register.php")
         if str(key) == '272':
-                ekg.command("msg " + current + " Podaj dane do konta (login (z małej litery) i hasło (w przypadku płatności paypal także email, z którego zostanie dokonana transkacja), którymi będziesz się logował do swojego konta shell) w celu wygenerowania danych do przelewu")
+                ekg.command("msg " + current + " Wyślij do mnie wiadomość (tutaj na gg) o treści !transfer tak jakbyś wysyłał SMS o takiej tresci")
         if str(key) == '273':
                 ekg.command("msg " + current + " Pozdrawiam i życzę wysokich transferów :-)")
 
