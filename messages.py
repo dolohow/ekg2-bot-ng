@@ -93,9 +93,8 @@ def advert(msg, uid):
 
 def message_to_everyone_from_list(self, msg):
 		f = open('list', 'r')
-		f.read().replace('\n', ',')
 		sendMessage = main.SendMessage()
-		sendMessage.setUid(f)
+		sendMessage.setUid(f.read().replace('\n', ','))
 		sendMessage.setMsg(msg)
 		sendMessage.sendMessageByUid()
 
