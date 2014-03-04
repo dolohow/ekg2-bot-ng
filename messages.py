@@ -94,7 +94,8 @@ def advert(msg, uid):
 def message_to_everyone_from_list(self, msg):
 		f = open('list', 'r')
 		sendMessage = main.SendMessage()
-		sendMessage.setUid(f.read().replace('\n', ','))
+		# TODO: pierwszy element nie ma nagłowka
+		sendMessage.setUid(f.read().replace('\n',',gg:'))
 		sendMessage.setMsg(msg)
 		sendMessage.sendMessageByUid()
 
