@@ -91,9 +91,8 @@ def advert(msg, uid):
         sendMessage.setMsg(msg)
         sendMessage.sendMessageByUid()
 
-def message_to_everyone_from_list(name, msg):
-		ekg.echo(str(name))
-		f = open('list', 'r').readlines()
+def message_to_everyone_from_list(self, msg):
+		f = open('list', 'r').replace('\n', ',')
 		sendMessage = main.SendMessage()
 		sendMessage.setUid(f)
 		sendMessage.setMsg(msg)
