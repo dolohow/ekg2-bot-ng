@@ -91,7 +91,7 @@ def advert(msg, uid):
         sendMessage.setMsg(msg)
         sendMessage.sendMessageByUid()
 
-def message_to_everyone_from_list(file_name, msg):
+def message_to_everyone_from_list(self, file_name, msg):
 		f = open(file_name, 'r').readlines()
 		sendMessage = main.SendMessage()
 		sendMessage.setUid(f)
