@@ -91,7 +91,15 @@ def advert(msg, uid):
         sendMessage.setMsg(msg)
         sendMessage.sendMessageByUid()
 
+def message_to_everyone_from_list(file_name, msg):
+		f = open(file_name, 'r').readlines()
+		sendMessage = main.SendMessage()
+		sendMessage.setUid(f)
+		sendMessage.setMsg(msg)
+		sendMessage.sendMessageByUid()
+
 ekg.command_bind('blokada', blokada)
 ekg.command_bind('deadbeats', wplaty)
 ekg.command_bind('info', info)
 ekg.command_bind('advert', advert)
+ekg.command_bind('announce', message_to_everyone_from_list)

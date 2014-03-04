@@ -51,7 +51,7 @@ class SendMessage():
 		self.msg = msg
 	def sendMessageByUid(self):
 	        for i in self.uid:
-		        ekg.command("msg %s %s" % (i, self.msg))
+		        ekg.command("msg %s %s" % (i.replace('\n', ''), self.msg))
 	def sendMessageByNick(self):
 	        for i in self.nick:
 		        ekg.command("msg %s %s" % (i, self.msg))
