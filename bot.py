@@ -44,7 +44,7 @@ def accountCommands(uid, mysql, text):
 			sendMessage.setUid(uid)
 			if a[0] == 0:
 				if a[1] == 'przelew':
-				    sendMessage.setMsg('Ciekot Grzegorz\nAl. Niepodleglosci 30\n42-200 Czestochowa\n\n45 1240 1213 1111 0010 5664 3911\n\ntytuł przelewu: hosting x%sx' % a[2])
+				    sendMessage.setMsg('Ciekot Grzegorz\nAl. Niepodleglosci 30\n42-200 Czestochowa\n\n36 1140 2004 0000 3902 3331 4150\n\ntytuł przelewu: hosting x%sx' % a[2])
 				elif a[1] == 'paypal':
 				    sendMessage.setMsg('paypal: woox@woox.pl\nproszę zaznaczyć prezent, krewni/znajomi')
 				elif a[1] == 'przysluga':

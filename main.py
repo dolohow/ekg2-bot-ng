@@ -16,7 +16,9 @@ class MySQLConnection:
 				connect_timeout=10,
 				charset='utf8')
 			self.handler = self.db.cursor()
-		except Exception:
+		except Exception as e:
+			ekg.echo(type(e))
+			ekg.echo(e)
 			return False
 	def query(self, content, *arg):
 		self.handler.execute(content, arg)
