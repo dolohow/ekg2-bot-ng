@@ -3,6 +3,7 @@
 
 import ekg
 import main
+import urllib
 
 domain = "http://woox.pl/API/api.php?"
 
