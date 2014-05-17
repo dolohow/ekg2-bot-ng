@@ -39,4 +39,4 @@ def email_reminder():
                     ekg.echo(e)
 
 ekg.timer_bind(86400, gg_reminder)
-ekg_timer_bind(86400, email_reminder)
+ekg.timer_bind(86400, email_reminder)
