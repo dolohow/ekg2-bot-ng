@@ -35,7 +35,7 @@ def email_reminder():
                 try:
                     s.sendmail("tacajushi@woox.pl" , tmp[1], msg.format(tmp[1], tmp[0], i))
                     ekg.echo("Wysłano email z przypomnieniem do: %s" % tmp[1]
-	            except Exception as e:
+                except Exception as e:
                     ekg.echo(e)
 
 ekg.timer_bind(86400, gg_reminder)
